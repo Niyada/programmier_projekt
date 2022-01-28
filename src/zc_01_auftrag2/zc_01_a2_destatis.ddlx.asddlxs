@@ -1,0 +1,90 @@
+@Metadata.layer: #PARTNER
+@EndUserText.label: 'Showing Statistics for DeStatis'
+
+@UI: {
+    headerInfo: {
+      typeName: 'DeStatis',
+      title: { value: 'Carrid' },
+      description: { value: 'Fldate' }
+    }
+}
+
+
+annotate view ZC_01_A2_FLIGHTData
+    with 
+{
+          @UI: {
+       lineItem: [ { position: 10, importance: #HIGH } ],
+       identification: [ { position: 10, importance: #HIGH } ],
+       selectionField: [ { position: 10 } ]
+       
+  }
+   Carrid;
+   
+             @UI: {
+       lineItem: [ { position: 20, importance: #HIGH } ],
+       identification: [ { position: 20, importance: #HIGH } ],
+       selectionField: [ { position: 20 } ]
+       
+  }
+   Connid;
+   
+             @UI: {
+       lineItem: [ { position: 30, importance: #HIGH } ],
+       identification: [ { position: 30, importance: #HIGH } ],
+       selectionField: [ { position: 30 } ]
+       
+  }
+   Countryfr;
+   
+             @UI: {
+       lineItem: [ { position: 40, importance: #HIGH } ],
+       identification: [ { position: 40, importance: #HIGH } ],
+       selectionField: [ { position: 40 } ]
+       
+  }
+   Cityfrom;
+   
+             @UI: {
+       lineItem: [ { position: 50, importance: #HIGH } ],
+       identification: [ { position: 50, importance: #HIGH } ],
+       selectionField: [ { position: 50 } ]
+       
+  }
+   Airpfrom;
+   
+             @UI: {
+       lineItem: [ { position: 10, importance: #HIGH } ],
+       identification: [ { position: 10, importance: #HIGH } ],
+       selectionField: [ { position: 10 } ]
+       
+  }
+   Countryto;
+   
+             @UI: {
+       lineItem: [ { position: 60, importance: #HIGH } ],
+       identification: [ { position: 60, importance: #HIGH } ],
+       selectionField: [ { position: 60 } ]
+       
+  }
+   Cityto;
+   
+             @UI: {
+       lineItem: [ { position: 70, importance: #HIGH } ],
+       identification: [ { position: 70, importance: #HIGH } ],
+       selectionField: [ { position: 70 } ]
+       
+  }
+   Airpto;
+   
+             @UI: {
+       lineItem: [ { position: 80, importance: #HIGH } ],
+       identification: [ { position: 80, importance: #HIGH } ],
+       selectionField: [ { position: 80 } ]
+       
+  }
+   Fldate;
+   
+  
+    
+}

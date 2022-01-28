@@ -1,0 +1,7 @@
+@EndUserText.label: 'FLights Access Controll based on User'
+@MappingRole: true
+define role ZC_01_FLIGHTS_ACCESSCONTROL {
+    grant select
+    on ZC_01_FLIGHTS
+    where (Carrid) = aspect pfcg_auth(s_carrid, carrid, ACTVT = '03');
+}

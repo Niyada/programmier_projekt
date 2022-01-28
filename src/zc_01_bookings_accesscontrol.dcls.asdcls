@@ -1,0 +1,10 @@
+@EndUserText.label: 'Access control for Booking View'
+@MappingRole: true
+define role ZC_01_BOOKINGS_ACCESSCONTROL {
+    grant
+        select
+            on
+                ZC_01_BOOKINGS
+                    where
+                        Agencynum = '00000323';
+        }

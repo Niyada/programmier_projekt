@@ -1,0 +1,309 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+    headerInfo: {
+      typeName: 'Flight',
+      typeNamePlural: 'Flights',
+      title: { value:'Carrid' },
+      description: { value: 'Connid' }
+    }
+}
+
+annotate view ZC_01_FLIGHTS with
+{
+
+  @UI.facet: [
+             { id: 'idFlight' ,
+               purpose: #HEADER,
+               label: 'Flight' ,
+               type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'hdFlight'
+             } ,
+             
+             { id:'idFlightInformation' ,
+               type: #COLLECTION ,
+               label: 'Flight Information' ,
+               position: 10 
+             } ,
+             { type: #IDENTIFICATION_REFERENCE ,
+               label : 'General Information',
+               parentId: 'idFlightInformation',
+               targetQualifier: 'fgGeneralInfo',
+               id: 'idGeneralInfoFlight' ,
+               position: 10 
+             },
+             { type: #FIELDGROUP_REFERENCE ,
+               label : 'Time Info',
+               targetQualifier: 'grTime' ,
+               parentId: 'idFlightInformation' ,
+               id : 'idTimeInfo' ,
+               position: 20 
+             },
+             { type: #FIELDGROUP_REFERENCE ,
+               label : 'From',
+               targetQualifier: 'grLocationFrom' ,
+               parentId: 'idFlightInformation' ,
+               id : 'idLocationFromInfo' ,
+               position: 30 
+             },
+             { type: #FIELDGROUP_REFERENCE ,
+               label : 'To',
+               targetQualifier: 'grLocationTo' ,
+               parentId: 'idFlightInformation' ,
+               id : 'idLocationToInfo' ,
+               position: 40 
+             },
+             
+             { label: 'Seating Information',
+               type: #COLLECTION,
+               position: 50,
+               id: 'idSeatingInfo'
+             },
+             { label: 'Total',
+               type: #FIELDGROUP_REFERENCE,
+               position: 51,
+               id: 'idSeatingTotalInfo',
+               parentId: 'idSeatingInfo',
+               targetQualifier: 'grSeatingTotal'
+             },
+             { label: 'Economy Class',
+               type: #FIELDGROUP_REFERENCE,
+               position: 60,
+               id: 'idSeatingEconomyInfo',
+               parentId: 'idSeatingInfo',
+               targetQualifier: 'grSeatingEconomy'
+             },
+             { label: 'Business Class',
+               type: #FIELDGROUP_REFERENCE,
+               position: 70,
+               id: 'idSeatingBusinessInfo',
+               parentId: 'idSeatingInfo',
+               targetQualifier: 'grSeatingBusiness'
+             },
+             { label: 'First Class',
+               type: #FIELDGROUP_REFERENCE,
+               position: 80,
+               id: 'idSeatingFirstInfo',
+               parentId: 'idSeatingInfo',
+               targetQualifier: 'grSeatingFirst'
+             },
+             
+             { label: 'Bookings',
+               type: #LINEITEM_REFERENCE,
+               targetElement: '_bookings',
+               position: 90 
+             }
+             ]
+
+  //  @UI.facet: [
+  //      { label: 'Display Flights', type: #IDENTIFICATION_REFERENCE },
+  //      { label: 'Display Bookings', type: #LINEITEM_REFERENCE, targetElement: '_bookings' }
+  //     ]
+
+
+
+
+    // CARRIER ID
+  @UI: {
+        lineItem: [ { position: 10, importance: #HIGH } ],
+        selectionField: [{ position: 10}],
+        identification: [ { position: 10, importance: #HIGH } ],
+        fieldGroup: [{ qualifier: 'hdFlight', position: 10, label: 'Carrier' }]
+   }
+  Carrid;
+
+
+  // CONNECTION ID
+  @UI: {
+        lineItem: [ { position: 20, importance: #HIGH } ],
+        selectionField: [{ position: 20}],
+        identification: [ { position: 20, importance: #HIGH } ],
+        fieldGroup: [{ qualifier: 'hdFlight', position: 20, label: 'Connection' }]
+   }
+  Connid;
+
+
+  // FLIGHT DATE
+  @UI: {
+        lineItem: [ { position: 30, importance: #HIGH } ],
+        selectionField: [{ position: 30}],
+        //identification: [ { position: 30, importance: #HIGH } ],
+        fieldGroup: [{ qualifier: 'grTime', position: 10 }]
+   }
+  Fldate;
+  
+  
+  
+  @UI: {
+        //lineItem: [ { position: 31, importance: #HIGH } ],
+        //selectionField: [{ position: 30}],
+        //identification: [ { position: 31, importance: #HIGH } ]
+        fieldGroup: [{ qualifier: 'grTime', position: 20 }]
+  }
+  deptime;
+   
+   
+   @UI: { 
+        fieldGroup: [{ qualifier: 'grTime', position: 20 }]
+   }
+  arrtime;
+
+  // PRICE
+  @UI: {
+        lineItem: [ { position: 40, importance: #HIGH } ],
+        selectionField: [{ position: 40}],
+        identification: [ { position: 40, importance: #HIGH } ]
+   }
+  Price;
+
+  // PAYMENT SUM
+  @UI: {
+       lineItem: [ { position: 41, importance: #MEDIUM } ],
+       identification: [ { position: 41, importance: #MEDIUM, hidden: true } ],
+       fieldGroup: [{ qualifier: 'fgBookingInfo', position: 41 }]
+  }
+  Paymentsum;
+
+
+  // CURRENCY
+  @UI: {
+        //lineItem: [ { position: 50, importance: #MEDIUM, hidden: true } ],
+        //selectionField: [{ position: 50}],
+        identification: [ { position: 50, importance: #MEDIUM, hidden: true } ]
+        //hidden: true
+   }
+  Currency;
+
+
+  // PLANETYPE
+  @UI: {
+      lineItem: [ { position: 60, importance: #HIGH } ],
+      identification: [ { position: 60, importance: #HIGH } ]
+  }
+  Planetype;
+
+
+  //SEATS MAXIMUM ECONOMY
+  @UI: {
+      //lineItem: [ { position: 70, importance: #LOW } ],
+      //identification: [ { position: 70, importance: #LOW } ],
+      fieldGroup: [{ qualifier: 'grSeatingEconomy', position: 10, label: 'Maximum' }]
+  }
+  Seatsmax;
+
+
+  //SEATS MAXIMUM ECONOMY
+  @UI: {
+       //lineItem: [ { position: 80, importance: #MEDIUM } ],
+       //identification: [ { position: 80, importance: #MEDIUM } ],
+       fieldGroup: [{ qualifier: 'grSeatingEconomy', position: 20, label: 'Occupied' }]
+  }
+  Seatsocc;
+
+
+  // SEATS MAX CLASS BUSINESS
+  @UI: {
+      //lineItem: [ { position: 100, importance: #LOW } ],
+      //identification: [ { position: 100, importance: #LOW } ],
+      fieldGroup: [{ qualifier: 'grSeatingBusiness', position: 10, label: 'Maximum' }]
+  }
+  SeatsmaxB;
+
+
+  // SETAS OCC CLASS BUSINESS
+  @UI: {
+       //lineItem: [ { position: 110, importance: #LOW } ],
+       //identification: [ { position: 110, importance: #LOW } ],
+       fieldGroup: [{ qualifier: 'grSeatingBusiness', position: 20, label: 'Occupied'}]
+       
+  }
+  SeatsoccB;
+
+
+  // SEATS MAX CLASS FIRST
+  @UI: {
+       //lineItem: [ { position: 120, importance: #LOW } ],
+       //identification: [ { position: 120, importance: #LOW } ],
+        fieldGroup: [{ qualifier: 'grSeatingFirst', position: 10, label: 'Maximum'}]
+  }
+  SeatsmaxF;
+
+
+  // SEATS OCCUPIED class FIRST
+  @UI: {
+       //lineItem: [ { position: 130, importance: #LOW } ],
+       //identification: [ { position: 130, importance: #LOW } ],
+       fieldGroup: [{ qualifier: 'grSeatingFirst', position: 20, label: 'Occupied'}]
+  }
+  SeatsoccF;
+
+
+  // OCCUPIED CAPCITY
+  @UI: {
+       lineItem: [ { position: 140, importance: #LOW, label: 'Occupancy Rate' } ],
+       identification: [ { position: 140, importance: #LOW, label: 'Occupancy Rate', hidden: true } ],
+       fieldGroup: [{ qualifier: 'hdFlight', position: 140, label: 'Occupancy Rate' }]
+  }
+  OccupiedCapacity;
+  
+  
+  // SEATS MAX
+  @UI: {
+       lineItem: [ { position: 150, importance: #MEDIUM, label: 'Total Seats Available', hidden: true } ],
+       //identification: [ { position: 150, importance: #MEDIUM , label: 'Total Seats Available' } ],
+       fieldGroup: [{ qualifier: 'grSeatingTotal', position: 10, label: 'Total Seats Available' }]
+  }
+  SeatsMaxSum;
+  
+  // SEATS OCCUPIED
+  @UI: {
+       lineItem: [ { position: 160, importance: #MEDIUM, label: 'Total Seats Occupied' } ],
+       //identification: [ { position: 160, importance: #MEDIUM , label: 'Total Seats Occupied' } ],
+       fieldGroup: [{ qualifier: 'grSeatingTotal', position: 20, label: 'Total Seats Occupied' }]
+  }
+  SeatsOccSum;
+    
+  
+  // FROM SECTION
+  
+  @UI: { 
+    fieldGroup: [{ qualifier: 'grLocationFrom', position: 50 }]
+  }
+  airpfrom;
+  
+  @UI: { 
+    fieldGroup: [{ qualifier: 'grLocationFrom', position: 51 }]
+  }
+  cityfrom;
+  
+  @UI: { 
+    fieldGroup: [{ qualifier: 'grLocationFrom', position: 52 }]
+  }
+  countryfr;
+  
+  
+  // TO SECTION
+  
+  @UI: { 
+     fieldGroup: [{ qualifier: 'grLocationTo', position: 100 }]
+  }
+  airpto;
+  
+  @UI: { 
+     fieldGroup: [{ qualifier: 'grLocationTo', position: 101 }]
+  }
+  
+  cityto;
+  
+  @UI: { 
+     fieldGroup: [{ qualifier: 'grLocationTo', position: 102 }]
+  }
+  countryto;
+  
+  /* Associations */
+
+  @UI.hidden: true
+  _bookings;
+
+
+}

@@ -1,0 +1,252 @@
+@Metadata.layer: #CUSTOMER
+@EndUserText.label: 'Showing Bookings from Miles and More'
+
+@UI: {
+    headerInfo: {
+      typeName: 'Flight Booking',
+      typeNamePlural: 'Flight Bookings',
+      title: { value: 'Bookid', label: 'Booking No.' },
+      description: { value: 'Fldate', label: 'Flight date' }
+    }
+    
+}
+
+
+annotate view ZC_01_BOOKINGS with
+{
+
+    @UI.facet: [
+        { id: 'idBookingHeader' ,
+               purpose: #HEADER,
+               label: 'Booking' ,
+               type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'hdBooking'
+        },
+               
+        { id:'idGeneralInformation' ,
+               type: #COLLECTION ,
+               label: 'General Information' ,
+               position: 10 } ,
+               
+        { id: 'idBookingInfo',
+               label: 'Booking Information', 
+               type: #IDENTIFICATION_REFERENCE,
+               parentId: 'idGeneralInformation',
+               position: 10},
+               
+       { type: #FIELDGROUP_REFERENCE ,
+               label : 'Cost & Price',
+               targetQualifier: 'fgCostInfo' ,
+               parentId: 'idGeneralInformation' ,
+               id : 'idCostInfo' ,
+               position: 20 
+       },
+  
+       { id:  'idPersonInfo',
+               label: 'Customer Information',
+               type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'grCustomer',
+               position: 20
+               
+       }
+    ]  
+  
+  
+  @UI: {
+       lineItem: [ { position: 10, importance: #HIGH } ],
+       identification: [ { position: 10, importance: #HIGH } ],
+       hidden: true
+  }
+  Carrid;
+
+  @UI: {
+  lineItem: [ { position: 20, importance: #HIGH } ],
+  //selectionField: [{ position: 20}],
+  identification: [ { position: 20, importance: #HIGH } ],
+  hidden: true
+  }
+  Connid;
+
+
+  @UI: {
+  lineItem: [ { position: 30, importance: #HIGH } ],
+  selectionField: [{ position: 30}],
+  identification: [ { position: 30, importance: #HIGH } ],
+  hidden: true
+  }
+  Fldate;
+
+
+  @UI: {
+  lineItem: [ { position: 40, importance: #HIGH } ],
+  selectionField: [{ position: 40}],
+  identification: [ { position: 40, importance: #HIGH } ]
+  }
+  Bookid;
+
+
+  @UI: {
+  lineItem: [ { position: 50, importance: #MEDIUM } ],
+  selectionField: [{ position: 50}],
+  identification: [ { position: 50, importance: #MEDIUM } ],
+  fieldGroup: [{ qualifier: 'grCustomer', position: 01 }]
+  }
+  Customid;
+
+
+  @UI: {
+  //lineItem: [ { position: 60, importance: #LOW } ],
+  //selectionField: [{ position: 60}],
+  //identification: [ { position: 60, importance: #LOW, label: 'Customer Type' } ],
+  fieldGroup: [{ qualifier: 'grCustomer', position: 40, label: 'Customer Type' }]
+  }
+  Custtype;
+
+
+  @UI: {
+  //lineItem: [ { position: 70, importance: #LOW, hidden: true } ],
+  //selectionField: [{ position: 70}],
+  //identification: [ { position: 70, importance: #LOW } ],
+  fieldGroup: [{ qualifier: 'grCustomer', position: 50, label: 'Smoker' }]
+  }
+  Smoker;
+
+
+  @UI: {
+  lineItem: [ { position: 80, importance: #MEDIUM } ],
+  selectionField: [{ position: 80}],
+  identification: [ { position: 80, importance: #MEDIUM, label: 'Class' } ]
+  //hidden: true
+  }
+  Class;
+
+  @UI: {
+  //lineItem: [ { position: 80, importance: #LOW, hidden: true } ],
+  //selectionField: [{ position: 80}],
+  //identification: [ { position: 80, importance: #LOW } ]
+  fieldGroup: [{ qualifier: 'grCustomer', position: 100 }]
+  
+  }
+  Luggweight;
+
+  @UI: {
+  //lineItem: [ { position: 80, importance: #LOW, hidden: true } ],
+  //selectionField: [{ position: 80}],
+  //identification: [ { position: 80, importance: #LOW, hidden: true } ]
+  fieldGroup: [{ qualifier: 'grCustomer', position: 100, hidden: true }]
+  }
+  Wunit;
+
+  @UI: {
+  lineItem: [ { position: 215, importance: #LOW, criticality: 'InvoiceCritically' } ],
+  //selectionField: [{ position: 80}],
+  identification: [ { position: 80, importance: #LOW, criticality: 'InvoiceCritically' } ]
+  }
+  Invoice;
+
+
+
+  @UI: {
+  //lineItem: [ { position: 90, importance: #HIGH } ],
+  //selectionField: [{ position: 90}],
+  //identification: [ { position: 90, importance: #HIGH } ]
+  fieldGroup: [{ qualifier: 'fgCostInfo', position: 10 }]
+  }
+  Loccuram;
+
+
+  @UI: {
+  //lineItem: [ { position: 100, importance: #HIGH } ],
+  //selectionField: [{ position: 100}],
+  identification: [ { position: 100, importance: #HIGH, hidden: true } ],
+  fieldGroup: [{ qualifier: 'fgCostInfo', position: 10, hidden: true }]
+  }
+  Loccurkey;
+
+
+  @UI: {
+  lineItem: [ { position: 110, importance: #LOW } ],
+  selectionField: [{ position: 110}],
+  identification: [ { position: 110, importance: #LOW } ]
+  }
+  OrderDate;
+
+  @UI: {
+  lineItem: [ { position: 120, importance: #LOW } ],
+  selectionField: [{ position: 120}],
+  identification: [ { position: 120, importance: #LOW } ]
+  }
+  Agencynum;
+
+
+    @UI: {
+      lineItem: [ { position: 210, importance: #HIGH}, 
+                  { type: #FOR_ACTION, dataAction: 'BOPF:CANCEL_BOOKING', label: 'Switch Cancellation'} ],
+      selectionField: [{ position: 210}],
+      identification: [ { position: 210, importance: #HIGH},
+                        { type: #FOR_ACTION, dataAction: 'BOPF:CANCEL_BOOKING', label: 'Switch Cancellation'} ]
+  }
+  Cancelled;
+
+
+  @UI: {
+  lineItem: [ { position: 55, importance: #HIGH } ],
+  //selectionField: [{ position: 140}],
+  //identification: [ { position: 140, importance: #HIGH } ]
+  fieldGroup: [{ qualifier: 'grCustomer', position: 10 }]
+  }
+  Passname;
+
+
+  @UI: {
+  //lineItem: [ { position: 150, importance: #HIGH } ],
+  //selectionField: [{ position: 150}],
+  //identification: [ { position: 150, importance: #HIGH, label: 'Date of Birth' } ]
+  fieldGroup: [{ qualifier: 'grCustomer', position: 20, label: 'Date of Birth' }]
+  }
+  Passbirth;
+
+
+  @UI: {
+  //lineItem: [ { position: 160, importance: #HIGH } ],
+  //selectionField: [{ position: 160}],
+  //identification: [ { position: 160, importance: #LOW } ],
+  fieldGroup: [{ qualifier: 'fgCostInfo', position: 20 }]
+  }
+  Forcuram;
+
+
+  @UI: {
+  //lineItem: [ { position: 170, importance: #LOW } ],
+  //selectionField: [{ position: 170}],
+  //identification: [ { position: 170, importance: #LOW, hidden: true } ],
+  fieldGroup: [{ qualifier: 'fgCostInfo', position: 10, hidden: true }]
+  }
+  Forcurkey;
+
+
+  @UI: {
+  lineItem: [ { position: 180, importance: #MEDIUM, label:'Sales Office No.' } ],
+  selectionField: [{ position: 180}],
+  identification: [ { position: 180, importance: #MEDIUM, label: 'Sales Office No.' } ]
+  }
+  Counter;
+
+
+  @UI: {
+  lineItem: [ { position: 190, importance: #MEDIUM } ],
+  selectionField: [{ position: 190}],
+  identification: [ { position: 190, importance: #MEDIUM } ],
+  hidden: true
+  }
+  Reserved;
+
+  @UI: {
+  lineItem: [ { position: 200, importance: #LOW } ],
+  selectionField: [{ position: 200}],
+  identification: [ { position: 200, importance: #LOW } ],
+  hidden: true
+  }
+  Passform;
+
+}

@@ -1,0 +1,65 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+    headerInfo: {
+      typeName: 'Passenger',
+      typeNamePlural: 'Passengers',
+      title: { value: 'Carrid' },
+      description: { value: 'Connid' }
+    }
+}
+annotate view ZC_01_A2_PASSENGERS with
+{
+
+  @UI: {
+         lineItem: [ { position: 10, importance: #HIGH } ],
+         selectionField: [{ position: 10}],
+         identification: [ { position: 10, importance: #HIGH } ]
+  }
+  Carrid;
+
+  @UI: {
+      lineItem: [ { position: 20, importance: #HIGH } ],
+      selectionField: [{ position: 20}],
+      identification: [ { position: 20, importance: #HIGH } ]
+  }
+  Connid;
+  @UI: {
+      lineItem: [ { position: 30, importance: #HIGH } ],
+      selectionField: [{ position: 30}],
+      identification: [ { position: 30, importance: #HIGH } ]
+  }
+  Fldate;
+  @UI: {
+      lineItem: [ { position: 40, importance: #HIGH } ],
+      fieldGroup: [{ position: 40, importance: #HIGH }],
+      identification: [ { position: 40, importance: #HIGH } ]
+  }
+  Price;
+  @UI: {
+      lineItem: [ { position: 50, importance: #HIGH } ],
+      identification: [ { position: 50, importance: #HIGH } ]
+  }
+  Currency;
+  @UI: {
+      lineItem: [ { position: 60, importance: #HIGH } ],
+      identification: [ { position: 60, importance: #HIGH } ]
+  }
+  Planetype;
+  @UI: {
+      lineItem: [ { position: 70, importance: #HIGH } ],
+      identification: [ { position: 70, importance: #HIGH } ]
+  }
+  Seatsmax;
+  @UI: {
+      lineItem: [ { position: 80, importance: #HIGH } ],
+      identification: [ { position: 80, importance: #HIGH } ]
+  }
+  Seatsocc;
+  @UI: {
+      lineItem: [ { position: 90, importance: #HIGH } ],
+      identification: [ { position: 90, importance: #HIGH } ]
+  }
+  Paymentsum;
+
+}

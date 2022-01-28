@@ -1,0 +1,92 @@
+@Metadata.layer: #PARTNER
+@EndUserText.label: 'Showing Flight Data only for Airlines'
+
+@UI: {
+    headerInfo: {
+      typeName: 'Airline Data',
+      typeNamePlural: 'Airline Datas',
+      title: { value: 'Carrid' },
+      description: { value: 'Fldate' }
+    }
+}
+annotate view Zc_01_A2_Airlines
+    with 
+{
+      @UI: {
+       lineItem: [ { position: 10, importance: #HIGH } ],
+       identification: [ { position: 10, importance: #HIGH } ],
+       selectionField: [ { position: 10 } ]
+       
+  }
+  Carrid;
+  
+        @UI: {
+       lineItem: [ { position: 20, importance: #HIGH } ],
+       identification: [ { position: 20, importance: #HIGH } ]
+  }
+  Connid;
+  
+        @UI: {
+       lineItem: [ { position: 30, importance: #HIGH } ],
+       identification: [ { position: 30, importance: #HIGH } ]
+  }
+  Fldate;
+  
+        @UI: {
+       lineItem: [ { position: 40, importance: #HIGH } ],
+       identification: [ { position: 40, importance: #HIGH } ]
+  }
+  Price;
+  
+        @UI: {
+       lineItem: [ { position: 50, importance: #HIGH } ],
+       identification: [ { position: 50, importance: #HIGH } ]
+  }
+  Currency;
+  
+        @UI: {
+       lineItem: [ { position: 60, importance: #HIGH } ],
+       identification: [ { position: 60, importance: #HIGH } ]
+  }
+  Planetype;
+  
+        @UI: {
+       lineItem: [ { position: 70, importance: #HIGH } ],
+       identification: [ { position: 70, importance: #HIGH } ]
+  }
+  Seatsmax;
+  
+        @UI: {
+       lineItem: [ { position: 80, importance: #HIGH } ],
+       identification: [ { position: 80, importance: #HIGH } ]
+  }
+  Seatsocc;
+  
+        @UI: {
+       lineItem: [ { position: 90, importance: #HIGH } ],
+       identification: [ { position: 90, importance: #HIGH } ]
+  }
+  Paymentsum;
+  
+        @UI: {
+       lineItem: [ { position: 100, importance: #HIGH } ],
+       identification: [ { position: 100, importance: #HIGH } ]
+  }
+  SeatsmaxB;
+  
+          @UI: {
+       lineItem: [ { position: 110, importance: #HIGH } ],
+       identification: [ { position: 110, importance: #HIGH } ]
+  }
+  SeatsmaxF; 
+  
+         @UI: {
+       lineItem: [ { position: 120, importance: #HIGH } ],
+       identification: [ { position: 120, importance: #HIGH } ]
+  }
+  SeatsoccF;
+  
+  
+    
+    
+}
